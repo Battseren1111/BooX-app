@@ -8,7 +8,6 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-import {BlackText} from '../common/black-text';
 import {BlueText} from '../common/blue-text';
 import {CText} from '../common/c-text';
 import {GreyText} from '../common/grey-text';
@@ -129,6 +128,6 @@ const styles = StyleSheet.create({
   btn: {
     flex: 3,
     width: '80%',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
