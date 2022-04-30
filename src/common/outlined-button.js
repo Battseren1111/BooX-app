@@ -6,7 +6,7 @@ import {CText} from './c-text';
 export const OutlinedButton = ({onPress, lg, title, bc, color}) => {
   const styles = StyleSheet.create({
     style: {
-      borderRadius: 5,
+      borderRadius: 15,
       borderWidth: 2,
       borderColor: bc ? bc : colors.primary,
       paddingVertical: size.md,

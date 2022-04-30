@@ -18,7 +18,7 @@ export const Head = ({onPress, title, icon}) => (
 
 const styles = StyleSheet.create({
   head: {
-    width: '100%',
+    width: '95%',
     paddingVertical: size.lg,
     paddingHorizontal: size.lg,
   },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -14,8 +14,29 @@ import {GreyText} from '../common/grey-text';
 import {IconButton} from '../common/icon-button';
 import {OutlinedButton} from '../common/outlined-button';
 import {colors, layout, size, text} from '../styles';
+import {authentication} from '../firebase/firebase-config';
+import {signInWithEmailAndPassword, signOut} from 'firebase/auth';
+import {AuthContext} from '../contexts/AuthContext';
 
 export const LoginScreen = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
+  const {userLogin, userLogout} = useContext(AuthContext);
+
+  const SignInUser = () => {
+    signInWithEmailAndPassword(authentication, email, pass)
+      .then(re => {
+        console.log('user logged in', re._tokenResponse.idToken);
+        userLogin(re._tokenResponse.idToken);
+        navigation.navigate('Tabs');
+      })
+      .catch(re => {
+        console.log('error', re);
+        alert('Буруу байна, Та бүртгэлээ шалгаад дахин оролдоно уу');
+      });
+  };
+
   return (
     <KeyboardAvoidingView
       style={styles.root}
@@ -46,14 +67,27 @@ export const LoginScreen = ({navigation}) => {
             <GreyText>Нэвтрэх нэр</GreyText>
             <View style={[layout.hsb, {flex: 1}]}>
               <IconButton icon="person-outline" color={colors.primary} />
-              <TextInput style={styles.input} />
+              <TextInput
+                value={email}
+                onChangeText={text => setEmail(text)}
+                style={styles.input}
+              />
             </View>
           </View>
           <View style={styles.inputWrapper}>
             <GreyText>Нууц үг</GreyText>
             <View style={[layout.hsb, {flex: 1}]}>
-              <IconButton icon="lock-closed-outline" color={colors.primary} />
-              <TextInput style={styles.input} secureTextEntry={true} />
+              <IconButton
+                icon="lock-closed-outline"
+                color={colors.primary}
+                // onPress={SignOutUser()}
+              />
+              <TextInput
+                style={styles.input}
+                value={pass}
+                onChangeText={text => setPass(text)}
+                secureTextEntry={true}
+              />
               <IconButton icon="eye" color={colors.primary} />
             </View>
           </View>
@@ -69,13 +103,13 @@ export const LoginScreen = ({navigation}) => {
           <View style={styles.btn}>
             <OutlinedButton
               title="Нэврэх"
-              onPress={() => navigation.navigate('Tabs')}
+              onPress={SignInUser}
               color={colors.primary}
             />
             <OutlinedButton
               title="Бүртгүүлэх"
               onPress={() => navigation.navigate('RegisterScreen')}
-              color={colors.card}
+              color={colors.primary}
               bc="transparent"
             />
           </View>

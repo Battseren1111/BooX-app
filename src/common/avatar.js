@@ -10,8 +10,8 @@ export const Avatar = ({img, lg, m}, props) => {
       borderRadius: lg ? 72 : 64,
       borderWidth: lg ? 2 : 0,
       borderColor: colors.primary,
-      width: lg ? 100 : m ? 80 : 64,
-      height: lg ? 100 : m ? 80 : 64,
+      width: lg ? 100 : m ? 80 : 24,
+      height: lg ? 100 : m ? 80 : 24,
       resizeMode: 'cover',
     },
   });

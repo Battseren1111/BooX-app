@@ -5,10 +5,15 @@ export const colors = {
   secondary: '#2DB93B',
   third: '#FFEEE3',
   background: '#FFFFFF',
-  card: '#7D7D7D',
+  card: '#656565',
   text: '#0C0C0C',
   border: '#707070',
-
+  inputTextColor: '#E8E8E8',
+  button: '#FF8434',
+  text1: '#616161',
+  text1bc: '#E1E1E1',
+  text1hoverbc: '#EFEFEF',
+  pinkOrange: '#FFEEE3',
 };
 
 export const gradientColors = ['#656368', colors.background];
@@ -19,8 +24,11 @@ export const text = StyleSheet.create({
     fontWeight: 'bold',
   },
   xl: {
-    fontSize: 24,
+    fontSize: 27,
     fontWeight: 'bold',
+  },
+  xlThin: {
+    fontSize: 27,
   },
   lg: {
     fontSize: 20,

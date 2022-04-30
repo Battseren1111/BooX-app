@@ -1,12 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
+import AuthProvider from './src/contexts/AuthContext';
 import {MainStack} from './src/navigation/MainStack';
 
 const App = () => {
   return (
-    <View style={{flex: 1}}>
-      <MainStack />
-    </View>
+    <AuthProvider>
+      <View style={{flex: 1}}>
+        <MainStack />
+      </View>
+    </AuthProvider>
   );
 };
 
